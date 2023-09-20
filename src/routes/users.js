@@ -2,11 +2,15 @@ import express from "express";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json([
-    { id: 1, name: "Aaron" },
-    { id: 2, name: "Laura" },
-  ]);
+router.get("/", async (req, res) => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  if (response.ok === false) {
+    return res
+      .json({ error: "Something went wrong fetching users" })
+      .status(500);
+  }
+  const data = await response.json();
+  return res.json(data);
 });
 
 router.get("/:id", (req, res) => {
