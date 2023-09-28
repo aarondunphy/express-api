@@ -1,5 +1,5 @@
 import "dotenv/config";
-import "./tracing.js";
+// import "./tracing.js";
 import express from "express";
 import userRoutes from "./routes/users.js";
 
