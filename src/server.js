@@ -7,6 +7,6 @@ const app = express();
 
 app.listen(3000);
 
-app.get("/", (req, res) => res.json({ title: "Hello World" }));
+app.get("/", (req, res) => res.json({ title: "Hello World from express 1" }));
 
 app.use("/users", userRoutes);
