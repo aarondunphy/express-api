@@ -3,6 +3,6 @@ import userRoutes from "./routes/users.js";
 
 export const app = express();
 
-app.get("/", (_req, res) => res.json({ title: "Hello World from express 1!" }));
+app.get("/", (_req, res) => res.json({ title: "Zip function uploaded!!!" }));
 
 app.use("/users", userRoutes);

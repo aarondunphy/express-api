@@ -25,3 +25,12 @@ jobs:
 
       - name: Build code
         run: npm run build
+
+      - name: Zip code
+        run: npm run build-zip
+
+      - name: Install AWS CLI
+        uses: unfor19/install-aws-cli-action@v1
+
+      - name: Deploy Code Artifact
+        run: aws lambda update-function-code --function-name express-api --zip-file fileb://build.zip
