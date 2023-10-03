@@ -36,7 +36,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::115991941084:role/service-role/express-api-role-3jiwd8ps
+          role-to-assume: arn:aws:iam::115991941084:role/GithubExpressApiAssumeRoleWithWebIdentity
           aws-region: eu-west-2
 
       - name: Deploy Code Artifact
