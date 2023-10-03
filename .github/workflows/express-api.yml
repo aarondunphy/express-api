@@ -6,8 +6,12 @@ on:
       - main
 
 jobs:
-  validatebuild:
+  validate_and_build:
     runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -29,8 +33,11 @@ jobs:
       - name: Zip code
         run: npm run build-zip
 
-      - name: Install AWS CLI
-        uses: unfor19/install-aws-cli-action@v1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::115991941084:role/service-role/express-api-role-3jiwd8ps
+          aws-region: eu-west-2
 
       - name: Deploy Code Artifact
         run: aws lambda update-function-code --function-name express-api --zip-file fileb://build.zip
