@@ -1,0 +1,27 @@
+name: Validate & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validatebuild:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Clean install npm deps
+        run: npm ci
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Build code
+        run: npm run build
